@@ -16,8 +16,9 @@ export type ConvertAudioProps = {
  */
 export const ConvertAudio: Component<ConvertAudioProps> = (props) => {
   const [progressBar, setProgressBar] = createSignal(0);
+  const [convertingLogger, setConverteringLogger] = createSignal("")
 
-  const ffmpeg = createFFmpeg({ log: false });
+  const ffmpeg = createFFmpeg({ log: true });
   const transcode = async () => {
     const mimeType = props.mimeType;
     const audioFile = props.file;
@@ -35,6 +36,17 @@ export const ConvertAudio: Component<ConvertAudioProps> = (props) => {
          * ratio is a float number between 0 to 1.
          */
         setProgressBar(ratio);
+      });
+
+      ffmpeg.setLogger(({ type, message }) => {
+        /*
+         * type can be one of following:
+         *
+         * info: internal workflow debug messages
+         * fferr: ffmpeg native stderr output
+         * ffout: ffmpeg native stdout output
+         */
+        setConverteringLogger(`${type} - ${message}`);
       });
 
       ffmpeg.FS("writeFile", name, await fetchFile(audioFile))
@@ -62,10 +74,13 @@ export const ConvertAudio: Component<ConvertAudioProps> = (props) => {
           disabled={!props.file}
         >{`Convert to ${props.mimeType}`}</button>
       </div>
-      {progressBar() < 1 && progressBar() > 0 && (
-        <div class="file-progress">
-          <div style={{ width: `${calculateProgressWidth()}%` }}></div>
-        </div>
+      {progressBar() > 0 && (
+        <>
+          <div class="file-progress">
+            <div style={{ width: `${calculateProgressWidth()}%` }}></div>
+          </div>
+          <div>{convertingLogger()}</div>
+        </>
       )}
       <div
         class="preview"
