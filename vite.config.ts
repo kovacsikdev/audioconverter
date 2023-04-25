@@ -20,6 +20,7 @@ export default defineConfig({
     cors: false
   },
   build: {
-    target: 'esnext'
+    target: 'esnext',
   },
+  base: "/audioconverter/"
 });
