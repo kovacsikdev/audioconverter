@@ -4,6 +4,8 @@ This app was created because I was tired of relying on online audio converters. 
 
 This is a simple app made in one day using [SolidJS](https://solidjs.com) and [FFMPEG.WASM](https://ffmpegwasm.netlify.app/)
 
+![app](https://kovacsikdev-media.s3.amazonaws.com/audio_converter_screenshot.png)
+
 ## Run this project locally
 
 ### Clone the repo
