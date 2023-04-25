@@ -27,7 +27,7 @@ const App: Component = () => {
     <div class="app">
       <div class="title">
         <h2>Simple audio converter</h2>
-        <p>Minimal audio converter app done client side. No server required.</p>
+        <p>Minimal audio converter app done client side. No uploading to a server required.</p>
         <ol>
           <li>Select an audio file to convert such as a .webm or .wav</li>
           <li>Choose a format to convert to</li>
