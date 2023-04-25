@@ -1,34 +1,34 @@
-## Usage
+## Audio Converter
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+This app was created because I was tired of relying on online audio converters.  Some would be behind a pay wall, only do 30 seconds worth, or require advertisements to work properly.
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+This is a simple app made in one day using [SolidJS](https://solidjs.com) and [FFMPEG.WASM](https://ffmpegwasm.netlify.app/)
 
+## Run this project locally
+
+### Clone the repo
 ```bash
-$ npm install # or pnpm install or yarn install
+$ git clone git@github.com:kovacsikdev/audioconverter.git
 ```
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+### Install dependencies
+```bash
+$ yarn install
+```
 
-## Available Scripts
+### Run the app locally
+```bash
+$ yarn start
+```
+Local server will be hosted locally here
+```
+http://localhost:3000/audioconverter/
+```
 
-In the project directory, you can run:
+## CI
+This project uses Github Actions as the continuous integration / development process. Whenever new changes are made and pushed to the main branch, a Github Action is automatically kicked off. This is to automatically push the changes to the Github Pages branch
 
-### `npm dev` or `npm start`
-
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br>
-
-### `npm run build`
-
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-## Deployment
-
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+You can see the steps being made in the yml file in
+```
+.github/workflows/main.yml
+```
